@@ -1,20 +1,27 @@
-package com.pamella.atividade4.ui.auth
+package com.pamella.atividade4.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.pamella.atividade4.R
-import com.pamella.atividade4.databinding.FragmentRecoverAccountBinding
-import com.pamella.atividade4.databinding.FragmentRegisterBinding
+import com.pamella.atividade4.databinding.FragmentFormTaskBinding
 import com.pamella.atividade4.util.initToolbar
 import com.pamella.atividade4.util.showBottonSheet
 
-class RecoverAccountFragment : Fragment(){
-    private var _binding: FragmentRecoverAccountBinding? = null
+class FormTaskFragment : Fragment() {
+
+    private var _binding: FragmentFormTaskBinding? = null
     private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentFormTaskBinding.inflate(inflater, container, false)
+        return binding.root }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,20 +30,19 @@ class RecoverAccountFragment : Fragment(){
     }
 
     private fun initListener(){
-        binding.btnEnviar.setOnClickListener{
+        binding.btnSave.setOnClickListener{
             validateData()
         }
     }
 
     private fun validateData(){
-        val email = binding.edittextemail.text.toString().trim()
+        val description = binding.editTextDescricao.text.toString().trim()
 
-        if (email.isNotBlank()) {
+        if (description.isNotBlank()) {
             Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
-
         } else{
-                showBottonSheet(message = R.string.email_empty)
-            }
+            showBottonSheet(message = R.string.description_empty_from_task_fragment)
+        }
     }
 
     override fun onDestroyView() {

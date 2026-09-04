@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.pamella.atividade4.R
 import com.pamella.atividade4.databinding.FragmentLoginBinding
 import com.pamella.atividade4.databinding.FragmentRegisterBinding
+import com.pamella.atividade4.util.showBottonSheet
 
 class LoginFragment : Fragment() {
 
@@ -29,10 +31,9 @@ class LoginFragment : Fragment() {
 
         initListener()
     }
-
     private fun initListener(){
         binding.btnLogin.setOnClickListener{
-            findNavController().navigate(R.id.action_global_homeFragment2)
+            findNavController().navigate(R.id.action_global_homeFragment)
         }
 
         binding.btnRegister.setOnClickListener{
@@ -41,6 +42,21 @@ class LoginFragment : Fragment() {
 
         binding.btnRecover.setOnClickListener{
             findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
+        }
+    }
+
+    private fun validateData(){
+        val email = binding.edittextemail.text.toString().trim()
+        val senha = binding.edittextsenha.text.toString().trim()
+        if (email.isNotBlank()){
+            if(senha.isNotBlank()){
+                findNavController().navigate(R.id.action_global_homeFragment)
+
+            } else{
+                showBottonSheet(message = R.string.password_empty)
+            }
+        } else {
+            showBottonSheet(message = R.string.email_empty)
         }
     }
 

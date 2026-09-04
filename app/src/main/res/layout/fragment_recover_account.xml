@@ -14,6 +14,7 @@
         android:id="@+id/linearLayout1">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/icback"
@@ -22,7 +23,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recuperar Conta"
+                android:text="@string/text_title_toolbar_recover_account_fragment"
                 android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"/>
 
@@ -38,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textMenssagem"
-                android:text="Informe seu e-mail de cadastro para receber \n um link para alteração de senha."
+                android:text="@string/text_info_recover_accont_fragment"
                 android:textColor="@color/white"
                 android:textAlignment="center"
                 android:layout_marginTop="24dp"/>
@@ -46,7 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="E-mail"
+                android:text="@string/email_text"
                 android:id="@+id/textViewEmail"
                 android:layout_marginTop="24dp"
                 android:textColor="@color/white"/>
@@ -54,20 +55,22 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:hint="Digite seu e-mail"
+                android:hint="@string/hint_edit_email"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
+                style="@style/EditTextTheme"
+                android:id="@+id/edittextemail"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/bg_edit_text"/>
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Enviar"
-                android:textColor="@color/color_default"
-                android:backgroundTint="@null"
+                android:text="@string/text_button_recover_account_fragment"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"/>
+                app:backgroundTint="@null"
+                style="@style/ButtomTheme"
+                android:id="@+id/btnEnviar" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
