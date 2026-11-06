@@ -13,6 +13,7 @@ import com.pamella.atividade4.data.model.Task
 import com.pamella.atividade4.databinding.FragmentDoneBinding
 import com.pamella.atividade4.databinding.FragmentTodoBinding
 import com.pamella.atividade4.ui.adapter.TaskAdapter
+import kotlin.collections.listOf
 
 class DoneFragment : Fragment() {
     private var _binding: FragmentDoneBinding? = null
@@ -31,8 +32,8 @@ class DoneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
-
-        initRecyclerViewTask(getTask())
+        initRecyclerViewTask()
+        getTask()
     }
 
     private fun initListeners(){
@@ -41,12 +42,14 @@ class DoneFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerViewTask(taskList: List<Task>){
-        taskAdapter = TaskAdapter(requireContext(), taskList) { task, option -> optionSelected(task,option)}
-        binding.recyclerViewTask.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewTask.setHasFixedSize(true)
+    private fun initRecyclerViewTask(){
+        taskAdapter = TaskAdapter(requireContext()) { task, option -> optionSelected(task,option)}
 
-        binding.recyclerViewTask.adapter = taskAdapter
+        with(binding.recyclerViewTask){
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            adapter = taskAdapter
+        }
     }
 
     private fun optionSelected(task:Task, option:Int){
@@ -66,13 +69,16 @@ class DoneFragment : Fragment() {
         }
     }
 
-    private fun getTask() = listOf(
-        Task("0", "Criar nova tela do app",  Status.DONE),
-        Task("1", "Validar informações na tela de login", Status.DONE),
-        Task("2", "Adcionar nova funionalidade no app", Status.DONE),
-        Task("3", "Salvar token localmente", Status.DONE),
-        Task("4", "Criar funcionalidade de logout no app", Status.DONE),
-    )
+    private fun getTask() {
+        val taskList = listOf(
+            Task("0", "Criar nova tela do app", Status.TODO),
+            Task("1", "Validar informações na tela de login", Status.TODO),
+            Task("2", "Adcionar nova funionalidade no app", Status.TODO),
+            Task("3", "Salvar token localmente", Status.TODO),
+            Task("4", "Criar funcionalidade de logout no app", Status.TODO),
+        )
+        taskAdapter.submitList(taskList)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

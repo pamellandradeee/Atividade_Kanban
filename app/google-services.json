@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "326955971030",
-    "project_id": "taskkanban-d8afa",
-    "storage_bucket": "taskkanban-d8afa.firebasestorage.app"
+    "project_number": "1012316066846",
+    "project_id": "taskapp-f369e",
+    "storage_bucket": "taskapp-f369e.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:326955971030:android:bf22d6531adaf4959b3477",
+        "mobilesdk_app_id": "1:1012316066846:android:9140f20f078a8c31c2ca0f",
         "android_client_info": {
           "package_name": "com.pamella.atividade4"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDd_vwFcc3HPSjLY2YeFNpiWAK1q0koEFM"
+          "current_key": "AIzaSyB_6aCul0Af6gE8FohOblcmm7sIKIFh1bg"
         }
       ],
       "services": {

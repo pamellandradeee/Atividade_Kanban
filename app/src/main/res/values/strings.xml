@@ -1,27 +1,37 @@
 <resources>
     <string name="app_name">Atividade4</string>
-    <!-- TODO: Remove or change this placeholder text -->
 
+    <!-- Status task -->
+    <string name="nomes">Júlia Moura, Pamella Alves e Vitória Cruz</string>
     <string name="status_task_todo">A Fazer</string>
     <string name="status_task_doing">Fazendo</string>
     <string name="status_task_done">Feitas</string>
     <string name="hint_edit_email">Digite o seu e-mail</string>
     <string name="hint_edit_password">Digite sua senha</string>
-    <string name="nomes">Júlia Moura, Pamella Alves e Vitória Cruz</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Generics -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_title_warning">Atenção</string>
     <string name="text_button_warning">Entendi</string>
-    <string name="password_empty">Preencha a senha</string>
+    <string name="password_empty">Preencha a senha!</string>
     <string name="password_text">Senha</string>
-    <string name="email_empty">Preencha seu email</string>
+    <string name="email_empty">Preencha seu email!</string>
     <string name="email_text">E-mail</string>
+    <string name="error_generic">Ocorreu um erro! Por favor tente novamente mais tarde.</string>
+    <string name="text_save_sucess_form_task_fragment">Salvo com sucesso.</string>
+    <string name="text_list_task_empty">Nenhuma tarefa cadastrada!</string>
+    <string name="text_list_task_load">Aguarde, estamos carregando as informações!</string>
+    <string name="text_delete_sucess_task">Tarefa removida com sucesso.</string>
+
 
     <string name="text_title_login_fragment">Login</string>
     <string name="text_button_register_login_fragment">Criar Conta</string>
     <string name="text_button_recover_login_fragment">Recuperar Conta</string>
-    
+
+    <string name="text_title_dialog_confira_logout">Deseja sair da sua conta?</string>
+    <string name="text_button_dialog_confirm_logout">Confirmar</string>
+    <string name="text_message_dialog_confirm_logout">Aperte em confirmar para sair da conta</string>
+
     <string name="email_empty_register_fragment">Preencha um email válido.</string>
     <string name="password_empty_register_fragment">Preencha uma senha.</string>
     <string name="text_button_register_fragment">Enviar</string>
@@ -31,7 +41,12 @@
     <string name="text_title_toolbar_recover_account_fragment">Recuperar Conta</string>
     <string name="text_button_recover_account_fragment">Enviar</string>
 
+    <string name="text_message_recover_account_fragment">Senha recuperada com sucesso!</string>
+
     <string name="description_empty_from_task_fragment">Preencha uma descrição</string>
 
-    
+    <string name="text_title_dialog_delete">Aperte em confirmar para sair da conta</string>
+    <string name="text_message_dialog_delete">Essa tarefa será deletada.</string>
+    <string name="text_button_dialog_confirm">Tem certeza que deseja deletar?</string>
+
 </resources>

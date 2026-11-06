@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.pamella.atividade4.R
 import com.pamella.atividade4.databinding.FragmentRegisterBinding
 import com.pamella.atividade4.util.initToolbar
 import com.pamella.atividade4.util.showBottonSheet
+import com.google.firebase.auth.FirebaseAuth
 
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +45,7 @@ class RegisterFragment : Fragment() {
 
         if (email.isNotBlank()){
             if(senha.isNotBlank()){
+                binding.progressBar.isVisible = true
                 Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
 
             } else{
@@ -51,6 +55,24 @@ class RegisterFragment : Fragment() {
             showBottonSheet(message = R.string.email_empty_register_fragment)
         }
     }
+
+    private fun registerUser(email: String, password: String){
+        try {
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener {  task ->
+                    if (task.isSuccessful){
+                        findNavController().navigate(R.id.action_global_homeFragment)
+                    }else{
+                        binding.progressBar.isVisible = false
+                        Toast.makeText(requireContext(), task.exception?.message,Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+        }catch (e : Exception){
+            Toast.makeText(requireContext(), e.message.toString(), Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
