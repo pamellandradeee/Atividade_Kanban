@@ -31,6 +31,7 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(binding.toolbar)
         initListener()
+        auth = FirebaseAuth.getInstance()
     }
 
     private fun initListener(){
@@ -39,16 +40,15 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun validateData(){
+    private fun validateData() {
         val email = binding.edittextemail.text.toString().trim()
         val senha = binding.edittextsenha.text.toString().trim()
 
-        if (email.isNotBlank()){
-            if(senha.isNotBlank()){
+        if (email.isNotBlank()) {
+            if (senha.isNotBlank()) {
                 binding.progressBar.isVisible = true
-                Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
-
-            } else{
+                registerUser(email, senha)
+            } else {
                 showBottonSheet(message = R.string.password_empty_register_fragment)
             }
         } else {
@@ -56,21 +56,21 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun registerUser(email: String, password: String){
-        try {
-            auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener {  task ->
-                    if (task.isSuccessful){
-                        findNavController().navigate(R.id.action_global_homeFragment)
-                    }else{
-                        binding.progressBar.isVisible = false
-                        Toast.makeText(requireContext(), task.exception?.message,Toast.LENGTH_SHORT).show()
-                    }
+    private fun registerUser(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                binding.progressBar.isVisible = false
 
+                if (task.isSuccessful) {
+                    findNavController().navigate(R.id.action_global_homeFragment)
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        task.exception?.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-        }catch (e : Exception){
-            Toast.makeText(requireContext(), e.message.toString(), Toast.LENGTH_SHORT).show()
-        }
+            }
     }
 
 
