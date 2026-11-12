@@ -2,7 +2,7 @@
     <string name="app_name">Atividade4</string>
 
     <!-- Status task -->
-    <string name="nomes">Júlia Moura, Pamella Alves e Vitória Cruz</string>
+    <string name="nomes">Pamella Alves e Vitória Cruz</string>
     <string name="status_task_todo">A Fazer</string>
     <string name="status_task_doing">Fazendo</string>
     <string name="status_task_done">Feitas</string>
